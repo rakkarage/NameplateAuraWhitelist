@@ -1,0 +1,9 @@
+## Interface: 100002
+## Version: v2023.0
+## Title: NameplateAuraWhitelist
+## Notes: Nameplate Aura Whitelist
+## Author: Sylen@wowinterface, rakkarage@gmail.com
+## SavedVariables: NameplateAuraWhitelistDB
+
+Core.lua
+Options.lua
