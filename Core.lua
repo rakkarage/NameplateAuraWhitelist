@@ -1,30 +1,31 @@
-local function dumpTable(table, depth)
-  	if (depth > 200) then
-		print("Error: Depth > 200 in dumpTable()")
-	return
-  end
-  for k,v in pairs(table) do
-	if (type(v) == "table") then
-		print(string.rep("  ", depth)..k..":")
-		dumpTable(v, depth+1)
-	else
-		print(string.rep("  ", depth)..k..": ",v)
-	end
-  end
-end
-
 local whitelist = {
 	["Shadow Word: Pain"] = "player",
 	["Mind Soothe"] = "all",
+	-- warrior
 	["Rend"] = true,
 	["Punish"] = true,
 	["Thunderous Roar"] = true,
 	["Charge"] = true,
 	["Intimidating Shout"] = true,
+	["Demoralizing Shout"] = true,
+	["Shockwave"] = true,
+	["Storm Bolt"] = true,
+	["Taunt"] = true,
+	["Hamstring"] = true,
+	["Spear of Bastion"] = true,
+	-- hunter
+	["Barbed Shot"] = true,
+	["Hunter's Mark"] = true,
+	["Death Chakram"] = true,
+	["Growl"] = true,
+	["Intimidation"] = true,
+	["Binding Shot"] = true,
+	["Tar Trap"] = true,
+	["Freezing Trap"] = true,
+	["Wing Clip"] = true,
 }
 
 local function newShouldShowBuff(_, name, caster)
-	print(caster)
 	return whitelist[name["name"]]
 end
 
