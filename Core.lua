@@ -40,6 +40,6 @@ local f = CreateFrame("Frame")
 	Mixin(C_NamePlate.GetNamePlateForUnit(unitId))
 end)
 
-for _,baseFrame in pairs(C_NamePlate.GetNamePlates()) do
+for _, baseFrame in pairs(C_NamePlate.GetNamePlates()) do
 	Mixin(baseFrame)
 end
