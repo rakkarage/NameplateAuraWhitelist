@@ -25,8 +25,18 @@ local whitelist = {
 	["Wing Clip"] = true,
 }
 
-local function newShouldShowBuff(_, name, caster)
-	return whitelist[name["name"]]
+local function newShouldShowBuff(aura, forceAll)
+	if (not aura or not aura.name) then
+		return false;
+	end
+	print(aura.name)
+	print(aura.nameplateShowAll)
+	print(forceAll)
+	print(aura.nameplateShowPersonal)
+	print(aura.sourceUnit)
+	return aura.nameplateShowAll or forceAll or
+			(aura.nameplateShowPersonal and (aura.sourceUnit == "player" or aura.sourceUnit == "pet" or aura.sourceUnit == "vehicle"));
+	-- return whitelist[name["name"]]
 end
 
 local function Mixin(baseFrame)
@@ -35,9 +45,7 @@ end
 
 local f = CreateFrame("Frame")
 	f:RegisterEvent("NAME_PLATE_UNIT_ADDED")
-	f:SetScript("OnEvent", function(_, _, unitId)
-
-	Mixin(C_NamePlate.GetNamePlateForUnit(unitId))
+	f:SetScript("OnEvent", function(_, _, unitId) Mixin(C_NamePlate.GetNamePlateForUnit(unitId))
 end)
 
 for _, baseFrame in pairs(C_NamePlate.GetNamePlates()) do
