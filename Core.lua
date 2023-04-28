@@ -25,18 +25,12 @@ local whitelist = {
 	["Wing Clip"] = true,
 }
 
-local function newShouldShowBuff(aura, forceAll)
+local function newShouldShowBuff(_, aura, forceAll)
 	if (not aura or not aura.name) then
-		return false;
+		return false
 	end
-	print(aura.name)
-	print(aura.nameplateShowAll)
-	print(forceAll)
-	print(aura.nameplateShowPersonal)
-	print(aura.sourceUnit)
 	return aura.nameplateShowAll or forceAll or
-			(aura.nameplateShowPersonal and (aura.sourceUnit == "player" or aura.sourceUnit == "pet" or aura.sourceUnit == "vehicle"));
-	-- return whitelist[name["name"]]
+			((aura.nameplateShowPersonal or whitelist[aura.name]) and (aura.sourceUnit == "player" or aura.sourceUnit == "pet" or aura.sourceUnit == "vehicle"))
 end
 
 local function Mixin(baseFrame)
