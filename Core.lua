@@ -30,7 +30,8 @@ local function newShouldShowBuff(_, aura, forceAll)
 		return false
 	end
 	return aura.nameplateShowAll or forceAll or
-			((aura.nameplateShowPersonal or whitelist[aura.name]) and (aura.sourceUnit == "player" or aura.sourceUnit == "pet" or aura.sourceUnit == "vehicle"))
+		((aura.nameplateShowPersonal or whitelist[aura.name]) and
+		(aura.sourceUnit == "player" or aura.sourceUnit == "pet" or aura.sourceUnit == "vehicle"))
 end
 
 local function Mixin(baseFrame)
