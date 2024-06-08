@@ -1,3 +1,28 @@
+-- TTOM = CreateFrame("Frame")
+-- TTOM.name = "TTOM"
+-- TTOM.notes = "ToolTip On Mouse"
+-- TTOM.defaults = {x = "32", y = "-32", anchor = "TOPLEFT"}
+-- TTOM.tooltips = {}
+
+-- function TTOM:OnEvent(event, ...)
+-- 	self[event](self, event, ...)
+-- end
+-- TTOM:SetScript("OnEvent", TTOM.OnEvent)
+-- TTOM:RegisterEvent("ADDON_LOADED")
+
+-- function TTOM:ADDON_LOADED(event, name)
+-- 	if name == TTOM.name then
+-- 		TTOMDB = TTOMDB or {}
+-- 		for key, value in pairs(self.defaults) do
+-- 			if not TTOMDB[key] then
+-- 				TTOMDB[key] = value
+-- 			end
+-- 		end
+-- 		self:InitializeOptions()
+-- 		self:UnregisterEvent(event)
+-- 	end
+-- end
+
 local whitelist = {
 	["Shadow Word: Pain"] = "player",
 	["Mind Soothe"] = "all",
@@ -38,10 +63,10 @@ local function Mixin(baseFrame)
 	baseFrame.UnitFrame.BuffFrame.ShouldShowBuff = newShouldShowBuff
 end
 
-local f = CreateFrame("Frame")
-	f:RegisterEvent("NAME_PLATE_UNIT_ADDED")
-	f:SetScript("OnEvent", function(_, _, unitId) Mixin(C_NamePlate.GetNamePlateForUnit(unitId))
-end)
+NAW = CreateFrame("Frame")
+NAW:RegisterEvent("NAME_PLATE_UNIT_ADDED")
+NAW:SetScript("OnEvent", function(_, _, unitId) Mixin(C_NamePlate.GetNamePlateForUnit(unitId)) end)
+-- self:InitializeOptions()
 
 for _, baseFrame in pairs(C_NamePlate.GetNamePlates()) do
 	Mixin(baseFrame)

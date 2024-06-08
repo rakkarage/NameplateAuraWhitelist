@@ -1,9 +1,0 @@
-## Interface: 11403
-## Version: v2023.0
-## Title: NameplateAuraWhitelist
-## Notes: Nameplate Aura Whitelist
-## Author: egingell, rakkarage@gmail.com
-## SavedVariables: NameplateAuraWhitelistDB
-
-Core.lua
-Options.lua
